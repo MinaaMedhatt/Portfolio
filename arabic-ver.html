@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عبد الله جورج - خبير بناء وكلاء الذكاء الاصطناعي والأتمتة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Default Dark Mode Colors */
+            --bg-primary: #0F172A; /* slate-900 */
+            --bg-secondary: #1E293B; /* slate-800 */
+            --bg-card: #1E293B; /* slate-800 */
+            --text-primary: #E2E8F0; /* slate-200 */
+            --text-secondary: #94A3B8; /* slate-400 */
+            --text-muted: #64748B; /* slate-500 */
+            --border-color: #334155; /* slate-700 */
+            --accent-gradient-from: #0EA5E9; /* sky-500 */
+            --accent-gradient-to: #2DD4BF; /* teal-400 */
+            --icon-accent-1: #2DD4BF; /* teal-500 */
+            --icon-accent-2: #0EA5E9; /* sky-500 */
+            --link-hover-underline: #2DD4BF; /* teal-400 */
+            --input-bg: #334155; /* slate-700 */
+            --input-focus-ring: #0EA5E9; /* sky-500 */
+            --shadow-color-btn: rgba(14, 165, 233, 0.4);
+            --hero-gradient-from: #0F172A; 
+            --hero-gradient-via: #1E293B;  
+            --hero-gradient-to: #0C4A6E;   /* sky-800 */
+            --nav-bg-color: rgba(30, 41, 59, 0.8); /* slate-800 with opacity */
+            --mobile-menu-bg: #334155; /* slate-700 */
+            --mobile-menu-hover-bg: #475569; /* slate-600 */
+            --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 12px 25px rgba(0, 0, 0, 0.2);
+            --scroll-top-bg: var(--icon-accent-1);
+            --scroll-top-hover-bg: var(--icon-accent-2);
+        }
+
+        .light-mode {
+            /* Light Mode Colors */
+            --bg-primary: #F8FAFC; /* slate-50 */
+            --bg-secondary: #FFFFFF; /* white */
+            --bg-card: #FFFFFF; /* white */
+            --text-primary: #1E293B; /* slate-800 */
+            --text-secondary: #475569; /* slate-600 */
+            --text-muted: #64748B; /* slate-500 */
+            --border-color: #E2E8F0; /* slate-200 */
+            --accent-gradient-from: #0EA5E9; 
+            --accent-gradient-to: #2DD4BF; 
+            --icon-accent-1: #0D9488; /* darker teal for light bg */
+            --icon-accent-2: #0284C7; /* darker sky for light bg */
+            --link-hover-underline: #14B8A6; /* darker teal for light bg */
+            --input-bg: #F1F5F9; /* slate-100 */
+            --input-focus-ring: #0EA5E9;
+            --shadow-color-btn: rgba(14, 165, 233, 0.3);
+            --hero-gradient-from: #F8FAFC; 
+            --hero-gradient-via: #FFFFFF;  
+            --hero-gradient-to: #E0F2FE;   /* sky-100 */
+            --nav-bg-color: rgba(241, 245, 249, 0.85); /* slate-100 with higher opacity */
+            --mobile-menu-bg: #FFFFFF; /* white */
+            --mobile-menu-hover-bg: #F1F5F9; /* slate-100 */
+            --card-shadow: 0 1px 3px 0 rgba(15,23,42,0.07), 0 1px 2px -1px rgba(15,23,42,0.04);
+            --card-shadow-hover: 0 10px 15px -3px rgba(15,23,42,0.07), 0 4px 6px -4px rgba(15,23,42,0.05);
+            --scroll-top-bg: var(--icon-accent-1);
+            --scroll-top-hover-bg: var(--icon-accent-2);
+        }
+
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif; /* Cairo for Arabic */
+            background-color: var(--bg-primary); 
+            color: var(--text-primary); 
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            color: #FFFFFF; 
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px var(--shadow-color-btn); 
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: var(--bg-card); 
+            border-color: var(--accent-gradient-to); 
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%; 
+            transform: translateX(-50%); 
+            bottom: -10px; 
+            width: 70%; 
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .section-heading:hover::after {
+            width: 90%; 
+        }
+        .card {
+            background-color: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            transition: transform 0.3s ease, box-shadow 0.4s ease, background-color 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-shadow-hover);
+        }
+        .hero-animate-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.4s; }
+        .hero-animate-delay-3 { animation-delay: 0.6s; }
+        .hero-animate-delay-4 { animation-delay: 0.8s; }
+
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .loader { border: 4px solid var(--border-color); border-top: 4px solid var(--icon-accent-1); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .fade-in-image { animation: fadeIn 1.5s ease-in-out forwards; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: scale(0.95); } 
+            to { opacity: 1; transform: scale(1); } 
+        }
+
+        .animate-pulse-custom { animation: pulseCustom 2s infinite; }
+        @keyframes pulseCustom { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+
+        .animate-bounce-slow { animation: bounceSlow 2.5s infinite; }
+        @keyframes bounceSlow { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        
+        .industry-icon { width: 4rem; height: 4rem; margin-bottom: 1rem; transition: transform 0.3s ease; }
+        .card:hover .industry-icon { transform: scale(1.1); }
+        
+        .nav-main-link { color: var(--text-secondary); position: relative; }
+        .nav-main-link:hover { color: var(--text-primary); }
+        /* For RTL, underline starts from right */
+        .nav-main-link::after { content: ''; position: absolute; width: 0; height: 2px; display: block; margin-top: 5px; right: 0; background: var(--link-hover-underline); transition: width 0.3s ease; -webkit-transition: width 0.3s ease; }
+        .nav-main-link:hover::after { width: 100%; left: 0; right: auto; } /* Corrected to fill from right to left on hover */
+        html[dir="rtl"] .nav-main-link:hover::after { left: auto; right: 0; } /* Ensure RTL specific underline fill */
+
+        
+        .nav-bg { 
+            background-color: var(--nav-bg-color); 
+            transition: transform 0.3s ease-in-out; 
+            transform: translateY(0);
+        }
+        .nav-up {
+            transform: translateY(-100%);
+        }
+
+        .footer-bg { background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); }
+        
+        .text-strong { color: #FFFFFF; } 
+        .light-mode .text-strong { color: #0F172A; } 
+        
+        .text-accent-1 { color: var(--icon-accent-1); }
+        .text-accent-2 { color: var(--icon-accent-2); }
+
+        .input-field { background-color: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-primary); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .input-field:focus { outline: none; border-color: var(--input-focus-ring); box-shadow: 0 0 0 2px var(--input-focus-ring); }
+        .input-field::placeholder { color: var(--text-muted); }
+
+        #mobile-menu { background-color: var(--mobile-menu-bg); }
+        #mobile-menu a, #mobile-theme-toggle, #mobile-lang-toggle { color: var(--text-secondary); }
+        #mobile-menu a:hover, #mobile-theme-toggle:hover, #mobile-lang-toggle:hover { background-color: var(--mobile-menu-hover-bg); color: var(--text-primary); }
+
+        #theme-toggle:hover, #lang-toggle:hover { background-color: var(--border-color); }
+        #theme-toggle-dark-icon { color: var(--text-secondary); }
+        .light-mode #theme-toggle-light-icon { color: #f59e0b; } 
+
+        #hero-bg-overlay { background-image: linear-gradient(to bottom left, var(--hero-gradient-from), var(--hero-gradient-via), var(--hero-gradient-to)); }
+
+        #scrollTopBtn {
+            background-color: var(--scroll-top-bg);
+            transition: opacity 0.3s ease-in-out, background-color 0.3s ease;
+        }
+        #scrollTopBtn:hover {
+            background-color: var(--scroll-top-hover-bg);
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* RTL adjustment for scroll to top button */
+        #scrollTopBtn { left: 1.5rem; right: auto !important; } 
+        html[dir="ltr"] #scrollTopBtn { right: 1.5rem; left: auto !important; }
+
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav id="main-navbar" class="nav-bg backdrop-blur-sm fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl md:text-3xl font-bold gradient-text">عبد الله جورج</a>
+            <div class="hidden md:flex space-x-6 items-center"> 
+                <a href="#home" class="nav-main-link text-sm md:text-base transition duration-300">الرئيسية</a>
+                <a href="#services" class="nav-main-link text-sm md:text-base transition duration-300">خدماتي</a>
+                <a href="#problems-solved" class="nav-main-link text-sm md:text-base transition duration-300">المشاكل التي أحلها</a>
+                <a href="#projects" class="nav-main-link text-sm md:text-base transition duration-300">مشاريعي</a>
+                <a href="#about" class="nav-main-link text-sm md:text-base transition duration-300">عني</a>
+                <a href="#blog" class="nav-main-link text-sm md:text-base transition duration-300">المدونة</a>
+                <a href="#contact" class="btn-primary font-semibold py-2 px-5 rounded-full shadow-md hover:shadow-lg transition duration-300 animate-pulse-custom text-sm md:text-base">
+                    لنتحدث
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full focus:outline-none transition-colors" title="تبديل المظهر" aria-label="تبديل المظهر">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.706a1 1 0 01-1.414 1.414l.707.706zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <a href="index.html" id="lang-toggle" class="p-2 rounded-full focus:outline-none transition-colors text-sm md:text-base nav-main-link" title="التحويل إلى الإنجليزية" aria-label="التحويل إلى الإنجليزية">
+                    English
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-secondary focus:outline-none" aria-label="فتح القائمة الجانبية" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden py-2">
+            <a href="#home" class="block px-4 py-2">الرئيسية</a>
+            <a href="#services" class="block px-4 py-2">خدماتي</a>
+            <a href="#problems-solved" class="block px-4 py-2">المشاكل التي أحلها</a>
+            <a href="#projects" class="block px-4 py-2">مشاريعي</a>
+            <a href="#about" class="block px-4 py-2">عني</a>
+            <a href="#blog" class="block px-4 py-2">المدونة</a>
+            <a href="#contact" class="block px-4 py-2">لنتحدث</a>
+            <button id="mobile-theme-toggle" class="w-full text-right px-4 py-2 flex items-center justify-start" aria-label="تبديل المظهر في القائمة الجانبية">
+                <span id="mobile-theme-toggle-text">التبديل إلى الوضع الفاتح</span> 
+                <svg id="mobile-theme-toggle-dark-icon" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="mobile-theme-toggle-light-icon" class="w-5 h-5 mr-2 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.706a1 1 0 01-1.414 1.414l.707.706zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+            <a href="index.html" id="mobile-lang-toggle" class="block px-4 py-2">التحويل إلى الإنجليزية</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+        <div id="hero-bg-overlay" class="absolute inset-0 opacity-60"></div>
+        <div class="absolute inset-0" style="background-image: url('https://placehold.co/1920x1080/0F172A/1E293B?text=خلفية+تقنية'); opacity: 0.05;"></div>
+
+        <div class="relative z-10 p-6 md:p-8 max-w-5xl mx-auto pt-32">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 mb-12">
+                <div class="md:w-2/5 order-1 md:order-2 hero-animate-up hero-animate-delay-4"> 
+                    <img src="https://i.postimg.cc/Xqc8hLRV/profile-pic.png" alt="عبد الله جورج - خبير بناء وكلاء الذكاء الاصطناعي" class="rounded-full w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover mx-auto shadow-2xl transition-all duration-300 transform hover:scale-105 fade-in-image" onerror="this.onerror=null;this.src='https://placehold.co/320x320/1E293B/E2E8F0?text=عبد+الله+ج.';">
+                </div>
+                <div class="md:w-3/5 text-center md:text-right order-2 md:order-1"> 
+                    <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 gradient-text hero-animate-up">
+                        مرحباً، أنا عبد الله جورج
+                    </h1>
+                    <p class="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-primary mb-3 hero-animate-up hero-animate-delay-1">
+                        خبيرك في <span class="font-semibold text-accent-2">بناء وكلاء الذكاء الاصطناعي</span> و<span class="font-semibold text-accent-1">استراتيجيات الأتمتة</span>.
+                    </p>
+                    <p class="text-lg md:text-xl lg:text-2xl text-secondary mb-6 hero-animate-up hero-animate-delay-2 leading-relaxed">
+                        هل تشعر بالإرهاق من المهام المتكررة، أو تكافح في تفاعلك مع العملاء، أو تفوتك فرص المبيعات؟ أنا أصمم <strong class="text-strong">وكلاء ذكاء اصطناعي أذكياء وسير عمل مستقل</strong> يعالجون هذه التحديات بشكل مباشر، محولاً تحدياتك التشغيلية إلى محركات نمو.
+                    </p>
+                     <p class="text-base md:text-lg lg:text-xl text-muted mb-8 hero-animate-up hero-animate-delay-3 leading-relaxed">
+                        سواء كان الأمر يتعلق <strong class="text-strong">بزيادة تحويلات التجارة الإلكترونية بشكل كبير</strong>، أو <strong class="text-strong">أتمتة مسارات المبيعات</strong>، أو <strong class="text-strong">تخصيص التسويق على نطاق واسع</strong>، أو <strong class="text-strong">إحداث ثورة في دعم العملاء</strong>، فإن حلولي المخصصة للذكاء الاصطناعي تحقق نتائج قابلة للقياس وتعيد لك وقتك الثمين.
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-0 sm:space-x-reverse sm:space-x-6 flex flex-col sm:flex-row justify-center hero-animate-up hero-animate-delay-3"> 
+                <a href="#contact" class="btn-primary font-semibold py-3 px-8 md:py-4 md:px-10 rounded-full shadow-lg hover:shadow-xl transition duration-300 text-lg md:text-xl animate-bounce-slow">
+                    حل معوقات أعمالي
+                </a>
+                <a href="#services" class="btn-secondary font-semibold py-3 px-8 md:py-4 md:px-10 rounded-full shadow-lg text-lg md:text-xl">
+                    اكتشف حلول الذكاء الاصطناعي الخاصة بي
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-20 section-heading mx-auto w-fit">خدماتي الأساسية في الذكاء الاصطناعي</h2>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 mb-20">
+                <div class="card p-6 md:p-8 rounded-2xl shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-accent-1 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> 
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold gradient-text">وكلاء الذكاء الاصطناعي الحواري</h3>
+                    </div>
+                    <p class="text-secondary text-base md:text-lg mb-6 leading-relaxed">
+                        أقوم ببناء روبوتات محادثة متقدمة، ومساعدين افتراضيين، وواجهات حوارية ذكية تعيد تعريف تفاعل العملاء، وتبسط الدعم، وتدفع المبيعات.
+                    </p>
+                    <ul class="list-disc list-inside text-secondary text-sm md:text-base space-y-2 pr-2"> 
+                        <li>دعم عملاء ذكي على مدار الساعة ومعالجة الأسئلة الشائعة</li>
+                        <li>تفاعلات مبيعات وتسويق مخصصة</li>
+                        <li>تأهيل العملاء المحتملين وتحديد المواعيد تلقائياً</li>
+                        <li>مكاتب مساعدة داخلية فعالة ومساعدو موظفين</li>
+                    </ul>
+                    <p class="mt-6 text-secondary text-sm md:text-base">
+                        <strong class="text-accent-2">المشكلة التي تم حلها:</strong> تقليل تكاليف الدعم، زيادة رضا العملاء، زيادة معدلات تحويل العملاء المحتملين، وتحسين الكفاءة الداخلية.
+                    </p>
+                </div>
+                <div class="card p-6 md:p-8 rounded-2xl shadow-xl">
+                     <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-accent-2 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold gradient-text">سير عمل الذكاء الاصطناعي الوكالي</h3>
+                    </div>
+                    <p class="text-secondary text-base md:text-lg mb-6 leading-relaxed">
+                        أقوم بتطوير أنظمة اتخاذ قرار مستقلة متطورة وحلول أتمتة ذاتية التحسين تتعامل مع المهام المعقدة وتقود التميز التشغيلي.
+                    </p>
+                    <ul class="list-disc list-inside text-secondary text-sm md:text-base space-y-2 pr-2">
+                        <li>إدارة المخزون وسلسلة التوريد التنبؤية</li>
+                        <li>التسعير الديناميكي الآلي وتحسين الإيرادات</li>
+                        <li>إنشاء المحتوى الذكي وتخصيصه</li>
+                        <li>الكشف الاستباقي عن الاحتيال وتخفيف المخاطر</li>
+                    </ul>
+                     <p class="mt-6 text-secondary text-sm md:text-base">
+                        <strong class="text-accent-1">المشكلة التي تم حلها:</strong> تحسين تخصيص الموارد، زيادة الإيرادات إلى أقصى حد، توسيع نطاق إنشاء المحتوى، وتعزيز الأمان باستخدام الأتمتة الذكية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problems-solved" class="py-20" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 section-heading mx-auto w-fit">تحويل الصناعات بالذكاء الاصطناعي</h2>
+            <p class="text-lg md:text-xl text-primary text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+                تم تصميم حلولي للذكاء الاصطناعي لمعالجة نقاط الضعف المحددة في الصناعة، وتقديم فوائد ملموسة وعائد كبير على الاستثمار. إليك كيف أساعد:
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">التجارة الإلكترونية</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        عزز المبيعات باستخدام روبوتات الدردشة المدعومة بالذكاء الاصطناعي للتسوق المخصص، وأتمتة معالجة الطلبات، وتحسين المخزون بالتحليلات التنبؤية.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                     <svg class="industry-icon mx-auto text-accent-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">أتمتة المبيعات</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        بسط تأهيل العملاء المحتملين، وأتمتة المتابعات مع وكلاء الذكاء الاصطناعي، واكتسب رؤى من خلال تحليلات المبيعات التنبؤية لإغلاق المزيد من الصفقات.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">ذكاء التسويق</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        قدم حملات مخصصة للغاية، وأتمتة إنشاء المحتوى لشرائح مختلفة، وحلل الأداء في الوقت الفعلي باستخدام الذكاء الاصطناعي.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">خدمة العملاء</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        قدم دعمًا على مدار الساعة طوال أيام الأسبوع مع وكلاء ذكاء اصطناعي أذكياء، وقلل أوقات الانتظار، وحل المشكلات بشكل أسرع، وحسن رضا العملاء بشكل عام.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit">تأثيري: مشاريع ودراسات حالة</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="card p-6 md:p-8 rounded-2xl shadow-xl flex flex-col">
+                    <img src="https://placehold.co/600x350/1E293B/2DD4BF?text=ذكاء+اصطناعي+للتجارة+الإلكترونية" alt="مشروع معزز تحويلات التجارة الإلكترونية" class="rounded-lg mb-6 w-full h-auto object-cover fade-in-image shadow-md">
+                    <h3 class="text-2xl md:text-3xl font-semibold gradient-text mb-4">معزز تحويلات التجارة الإلكترونية</h3>
+                    <p class="text-secondary text-base md:text-lg mb-3"><strong class="text-strong">المشكلة:</strong> كان بائع تجزئة للأزياء عبر الإنترنت ينمو بسرعة يعاني من انخفاض معدلات التحويل على الموقع وارتفاع معدل التخلي عن عربات التسوق على الرغم من حركة المرور الكبيرة.</p>
+                    <p class="text-secondary text-base md:text-lg mb-3"><strong class="text-strong">حل الذكاء الاصطناعي الخاص بي:</strong> قمت بتطوير ونشر وكيل ذكاء اصطناعي حواري متطور. قام هذا الوكيل بإشراك الزوار بتوصيات منتجات مخصصة بناءً على سلوك التصفح، وأجاب على الاستفسارات على الفور، وقدم مساعدة استباقية أثناء عملية الدفع لمعالجة نقاط الاحتكاك المحتملة.</p>
+                    <div class="mt-auto">
+                        <p class="text-secondary text-base md:text-lg mb-1"><strong class="text-strong">النتائج الملموسة:</strong></p>
+                        <ul class="list-disc list-inside text-accent-1 text-sm md:text-base space-y-1 pr-2"> 
+                            <li><span class="font-semibold">زيادة بنسبة 18%</span> في معدل التحويل الإجمالي في غضون 3 أشهر.</li>
+                            <li><span class="font-semibold">انخفاض بنسبة 12%</span> في معدل التخلي عن عربة التسوق.</li>
+                            <li><span class="font-semibold">ارتفاع بنسبة 20%</span> في متوسط قيمة الطلب بسبب البيع المتقاطع الذكي.</li>
+                        </ul>
+                        <span class="text-xs text-muted block mt-3">التقنيات الرئيسية: معالجة اللغة الطبيعية، تعلم الآلة، محركات التوصية، تكامل واجهة برمجة تطبيقات التجارة الإلكترونية.</span>
+                    </div>
+                </div>
+                <div class="card p-6 md:p-8 rounded-2xl shadow-xl flex flex-col">
+                    <img src="https://placehold.co/600x350/1E293B/0EA5E9?text=أتمتة+المبيعات" alt="مشروع رعاية العملاء المحتملين للمبيعات بشكل مستقل" class="rounded-lg mb-6 w-full h-auto object-cover fade-in-image shadow-md">
+                    <h3 class="text-2xl md:text-3xl font-semibold gradient-text mb-4">رعاية العملاء المحتملين للمبيعات بشكل مستقل</h3>
+                    <p class="text-secondary text-base md:text-lg mb-3"><strong class="text-strong">المشكلة:</strong> واجهت شركة برمجيات كخدمة (SaaS) بين الشركات (B2B) عدم كفاءة في مسار مبيعاتها. غالبًا ما كانت تتم متابعة العملاء المحتملين بشكل غير متسق، وكان فريق المبيعات يقضي وقتًا طويلاً في مهام التأهيل اليدوية.</p>
+                    <p class="text-secondary text-base md:text-lg mb-3"><strong class="text-strong">حل الذكاء الاصطناعي الخاص بي:</strong> قمت بتطبيق سير عمل وكيل ذكاء اصطناعي متكامل مع نظام إدارة علاقات العملاء (CRM) الخاص بهم. قام سير العمل هذا بتأهيل العملاء المحتملين الجدد بشكل مستقل بناءً على معايير محددة مسبقًا، وتقسيمهم، وبدء تسلسلات رعاية بريد إلكتروني مخصصة. كما قام أيضًا بجدولة العروض التوضيحية للعملاء المحتملين المؤهلين تأهيلاً عالياً مباشرة في تقويمات مندوبي المبيعات.</p>
+                     <div class="mt-auto">
+                        <p class="text-secondary text-base md:text-lg mb-1"><strong class="text-strong">النتائج الملموسة:</strong></p>
+                        <ul class="list-disc list-inside text-accent-2 text-sm md:text-base space-y-1 pr-2"> 
+                            <li><span class="font-semibold">زيادة بنسبة 25%</span> في العملاء المحتملين المؤهلين تسويقيًا (MQLs) الذين تم تمريرهم إلى المبيعات.</li>
+                            <li><span class="font-semibold">انخفاض بنسبة 15%</span> في متوسط طول دورة المبيعات.</li>
+                            <li><span class="font-semibold">تحسن بنسبة 30%</span> في إنتاجية فريق المبيعات عن طريق أتمتة المهام الروتينية.</li>
+                        </ul>
+                        <span class="text-xs text-muted block mt-3">التقنيات الرئيسية: تسجيل نقاط العملاء المحتملين التنبؤي، أتمتة CRM، تخصيص البريد الإلكتروني المدفوع بالذكاء الاصطناعي.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20" style="background-color: var(--bg-secondary);"> 
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit">عن عبد الله جورج</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-0 md:space-x-reverse md:space-x-12 p-8 md:p-12 rounded-2xl shadow-2xl" style="background-color: var(--bg-primary);"> 
+                <div class="md:w-1/3 mb-8 md:mb-0 text-center">
+                     <img src="https://i.postimg.cc/Xqc8hLRV/profile-pic.png" alt="عبد الله جورج - متخصص في الذكاء الاصطناعي" class="rounded-full w-56 h-56 md:w-72 md:h-72 object-cover mx-auto shadow-xl transition-all duration-300 transform hover:scale-105 fade-in-image" onerror="this.onerror=null;this.src='https://placehold.co/288x288/1E293B/E2E8F0?text=عبد+الله+ج.';">
+                </div>
+                <div class="md:w-2/3 text-center md:text-right"> 
+                    <h3 class="text-2xl md:text-3xl lg:text-4xl font-semibold gradient-text mb-4">رؤيتي: الذكاء الاصطناعي كشريكك الاستراتيجي</h3>
+                    <p class="text-secondary text-base md:text-lg lg:text-xl mb-5 leading-relaxed">
+                        أنا عبد الله جورج، خبير بناء وكلاء الذكاء الاصطناعي وشغوف بتحويل الأعمال من خلال الأتمتة الذكية. رؤيتي ليست مجرد تطبيق الذكاء الاصطناعي، بل جعله شريكًا استراتيجيًا أساسيًا يفهم تحدياتك الفريدة ويقود الحلول بشكل استباقي.
+                    </p>
+                    <p class="text-secondary text-base md:text-lg lg:text-xl mb-5 leading-relaxed">
+                        أؤمن بنهج تعاوني، حيث أعمل معك عن كثب لتحليل المشكلات، وتحديد الفرص، وصياغة وكلاء وسير عمل ذكاء اصطناعي مخصصة. ينصب تركيزي دائمًا على تحقيق نتائج عملية وقابلة للقياس - سواء كان ذلك زيادة الكفاءة، أو تعزيز تجارب العملاء، أو فتح آفاق جديدة للإيرادات.
+                    </p>
+                     <p class="text-secondary text-base md:text-lg lg:text-xl mb-8 leading-relaxed">
+                        بفضل خبرتي في معالجة اللغة الطبيعية، وتعلم الآلة، وتصميم الأنظمة الوكالية، أنا ملتزم بالبقاء في طليعة ابتكارات الذكاء الاصطناعي لأقدم لك حلولاً ليست فقط متطورة، ولكنها أيضًا قوية وقابلة للتطوير ومتوافقة مع أهداف عملك.
+                    </p>
+                    <a href="#contact" class="btn-primary font-semibold py-3 px-8 md:text-lg rounded-full shadow-lg hover:shadow-xl transition duration-300 inline-block">
+                        لنضع خارطة طريق الذكاء الاصطناعي الخاصة بك
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit">رؤى ووجهات نظر حول الذكاء الاصطناعي</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://placehold.co/600x350/1E293B/2DD4BF?text=وكلاء+مستقلون" alt="منشور مدونة: الوكلاء المستقلون" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">صعود الوكلاء المستقلين في الأعمال</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        استكشف كيف يتجاوز وكلاء الذكاء الاصطناعي المستقلون أتمتة المهام البسيطة ليصبحوا صناع قرار استباقيين وأصولًا استراتيجية للشركات.
+                    </p>
+                    <a href="#" class="text-accent-1 hover:underline text-sm md:text-base font-medium">اقرأ المزيد &larr;</a> 
+                </div>
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://placehold.co/600x350/1E293B/0EA5E9?text=تخصيص+بالذكاء+الاصطناعي" alt="منشور مدونة: التخصيص بالذكاء الاصطناعي" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">التخصيص الفائق: ميزة الذكاء الاصطناعي في التسويق</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        نظرة عميقة في كيف يُحدث التخصيص المدفوع بالذكاء الاصطناعي ثورة في التسويق، مما يخلق رحلات عملاء فريدة تعزز التفاعل والولاء.
+                    </p>
+                    <a href="#" class="text-accent-2 hover:underline text-sm md:text-base font-medium">اقرأ المزيد &larr;</a>
+                </div>
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://placehold.co/600x350/1E293B/2DD4BF?text=دعم+العملاء+بالذكاء+الاصطناعي" alt="منشور مدونة: الذكاء الاصطناعي في دعم العملاء" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">مستقبل دعم العملاء: التعاطف المدعوم بالذكاء الاصطناعي</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        اكتشف كيف أن الذكاء الاصطناعي الحواري المتقدم لا يجيب على الأسئلة فحسب، بل يفهم المشاعر ويقدم دعمًا متعاطفًا على نطاق واسع.
+                    </p>
+                    <a href="#" class="text-accent-1 hover:underline text-sm md:text-base font-medium">اقرأ المزيد &larr;</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn-secondary font-semibold py-3 px-8 md:text-lg rounded-full shadow-lg">
+                    تصفح جميع المقالات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20" style="background-color: var(--bg-secondary);"> 
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit">لنتناقش حول تحولك الرقمي بالذكاء الاصطناعي</h2>
+            <div class="max-w-3xl mx-auto card p-8 md:p-10 rounded-2xl shadow-2xl">
+                <p class="text-primary text-lg md:text-xl text-center mb-8">
+                    هل أنت مستعد لإطلاق العنان لقوة وكلاء الذكاء الاصطناعي المستقلين لعملك؟ املأ النموذج أدناه، أو حدد موعدًا لاستشارة مباشرة. دعنا نحول تحدياتك إلى فرص.
+                </p>
+                <form id="contact-form" class="space-y-6" aria-labelledby="contact-form-heading-ar">
+                    <span id="contact-form-heading-ar" class="sr-only">تواصل مع عبد الله جورج</span>
+                    <div>
+                        <label for="name" class="block text-secondary text-sm md:text-base font-bold mb-2">اسمك</label>
+                        <input type="text" id="name" name="name" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: أحمد خالد" required autocomplete="name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-secondary text-sm md:text-base font-bold mb-2">بريدك الإلكتروني</label>
+                        <input type="email" id="email" name="email" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: ahmed.k@company.com" required autocomplete="email">
+                    </div>
+                    <div>
+                        <label for="company" class="block text-secondary text-sm md:text-base font-bold mb-2">اسم الشركة (اختياري)</label>
+                        <input type="text" id="company" name="company" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: حلول إينوفاتك" autocomplete="organization">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-secondary text-sm md:text-base font-bold mb-2">ما هو تحدي العمل الذي يمكنني مساعدتك في حله بالذكاء الاصطناعي؟</label>
+                        <textarea id="message" name="message" rows="5" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: نعاني من ارتفاع حجم طلبات دعم العملاء..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary font-semibold py-3 px-10 md:text-lg rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                            إرسال استفساري
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-10">
+                    <p class="text-primary text-base md:text-lg mb-4">هل تفضل محادثة مباشرة؟</p>
+                    <a href="https://calendly.com/your-calendly-link" target="_blank" rel="noopener noreferrer" class="btn-secondary font-semibold py-3 px-8 md:text-lg rounded-full shadow-lg inline-block">
+                        احجز استشارة مجانية (Calendly)
+                    </a>
+                </div>
+                <div class="mt-16 pt-10 border-t border-border-color">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 gradient-text">فكرة حل سريعة بالذكاء الاصطناعي ✨</h3>
+                    <p class="text-secondary text-base md:text-lg text-center mb-6" id="ai-idea-description-ar">
+                        هل لديك فضول لمعرفة كيف يمكن للذكاء الاصطناعي معالجة مشكلة معينة؟ صف مجالك والتحدي الذي تواجهه، وسأقوم بتوليد مفهوم حل محتمل بالذكاء الاصطناعي لك!
+                    </p>
+                    <div class="space-y-6" role="form" aria-labelledby="ai-idea-description-ar">
+                        <div>
+                            <label for="industry-input" class="block text-secondary text-sm md:text-base font-bold mb-2">مجالك (مثال: التجارة الإلكترونية، البرمجيات كخدمة، الرعاية الصحية)</label>
+                            <input type="text" id="industry-input" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: التجارة الإلكترونية" required>
+                        </div>
+                        <div>
+                            <label for="challenge-input" class="block text-secondary text-sm md:text-base font-bold mb-2">تحدي عملك الأساسي</label>
+                            <textarea id="challenge-input" rows="3" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 leading-tight" placeholder="مثال: ارتفاع معدل تراجع العملاء" required></textarea>
+                        </div>
+                        <div class="flex justify-center items-center space-x-4 space-x-reverse">
+                            <button id="generate-solution-btn" class="btn-primary font-semibold py-3 px-8 md:text-lg rounded-full shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
+                                إنشاء فكرة بالذكاء الاصطناعي
+                            </button>
+                            <div id="loader" class="loader" role="status" aria-live="polite">
+                                 <span class="sr-only">جاري التحميل...</span>
+                            </div>
+                        </div>
+                        <div id="solution-output" class="mt-8 p-6 rounded-lg shadow-inner hidden" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);" aria-live="polite"> 
+                            <h4 class="text-xl md:text-2xl font-semibold text-primary mb-3">مفهوم حل محتمل بالذكاء الاصطناعي:</h4>
+                            <p class="text-primary text-base md:text-lg leading-relaxed" id="solution-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bg py-10 text-center text-muted text-sm md:text-base">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 عبد الله جورج - خبير بناء وكلاء الذكاء الاصطناعي. جميع الحقوق محفوظة.</p>
+            <div class="mt-4 space-x-4 space-x-reverse">
+                <a href="#" class="hover:text-primary transition duration-300">سياسة الخصوصية</a>
+                <a href="#" class="hover:text-primary transition duration-300">شروط الخدمة</a>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="scrollTopBtn" class="fixed bottom-6 left-6 p-3 rounded-full text-white shadow-lg opacity-0 pointer-events-none z-50" title="الصعود للأعلى" aria-label="الصعود للأعلى">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileDarkIcon = document.getElementById('mobile-theme-toggle-dark-icon');
+        const mobileLightIcon = document.getElementById('mobile-theme-toggle-light-icon');
+        const mobileThemeToggleText = document.getElementById('mobile-theme-toggle-text');
+
+        const AR_SWITCH_TO_DARK_MODE = 'التبديل إلى الوضع الداكن';
+        const AR_SWITCH_TO_LIGHT_MODE = 'التبديل إلى الوضع الفاتح';
+
+        function applyTheme(isLight) {
+            if (isLight) {
+                document.body.classList.add('light-mode');
+                document.body.classList.remove('dark-mode');
+                if(darkIcon) darkIcon.classList.add('hidden');
+                if(lightIcon) lightIcon.classList.remove('hidden');
+                if (mobileDarkIcon && mobileLightIcon && mobileThemeToggleText) {
+                    mobileDarkIcon.classList.add('hidden');
+                    mobileLightIcon.classList.remove('hidden');
+                    mobileThemeToggleText.textContent = AR_SWITCH_TO_DARK_MODE;
+                }
+            } else {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+                if(darkIcon) darkIcon.classList.remove('hidden');
+                if(lightIcon) lightIcon.classList.add('hidden');
+                 if (mobileDarkIcon && mobileLightIcon && mobileThemeToggleText) {
+                    mobileDarkIcon.classList.remove('hidden');
+                    mobileLightIcon.classList.add('hidden');
+                    mobileThemeToggleText.textContent = AR_SWITCH_TO_LIGHT_MODE;
+                }
+            }
+        }
+        
+        let preferredTheme = localStorage.getItem('theme');
+        let isLightModeActive = preferredTheme === 'light';
+        if (preferredTheme === null) { 
+             isLightModeActive = false; 
+             localStorage.setItem('theme', 'dark');
+        }
+        applyTheme(isLightModeActive);
+
+        function toggleTheme() {
+            isLightModeActive = !isLightModeActive;
+            localStorage.setItem('theme', isLightModeActive ? 'light' : 'dark');
+            applyTheme(isLightModeActive);
+        }
+
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Functionality
+        const mobileMenuEl = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+        function closeMobileMenu() {
+            if (mobileMenuEl && !mobileMenuEl.classList.contains('hidden')) {
+                mobileMenuEl.classList.add('hidden');
+                 if (mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        if (mobileMenuButton && mobileMenuEl) {
+            mobileMenuButton.addEventListener('click', function() {
+                const isHidden = mobileMenuEl.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            const mobileMenuLinks = mobileMenuEl.querySelectorAll('a, button');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                     if (link.id !== 'mobile-theme-toggle') { // Don't close for theme toggle itself
+                        closeMobileMenu();
+                    }
+                });
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') { 
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else { 
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const navbar = document.querySelector('nav#main-navbar');
+                        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                closeMobileMenu();
+            });
+        });
+        
+        // Navbar hide on scroll & Scroll-to-top button
+        let lastScrollTop = 0;
+        const mainNavbar = document.getElementById('main-navbar');
+        const scrollTopButton = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', function() {
+            let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (mainNavbar) {
+                if (currentScrollTop > lastScrollTop && currentScrollTop > mainNavbar.offsetHeight) {
+                    mainNavbar.classList.add('nav-up');
+                } else {
+                    mainNavbar.classList.remove('nav-up');
+                }
+            }
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; 
+        
+            if (scrollTopButton) {
+                if (currentScrollTop > 300) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            }
+        });
+
+        if (scrollTopButton) {
+            scrollTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Gemini API Integration (Prompt remains in English, output displayed in English, UI messages are AR)
+        const generateSolutionBtn = document.getElementById('generate-solution-btn');
+        if(generateSolutionBtn) {
+            generateSolutionBtn.addEventListener('click', async function() {
+                const industryInput = document.getElementById('industry-input');
+                const challengeInput = document.getElementById('challenge-input');
+                const industry = industryInput.value.trim();
+                const challenge = challengeInput.value.trim();
+                const solutionOutputDiv = document.getElementById('solution-output');
+                const solutionTextP = document.getElementById('solution-text');
+                const loader = document.getElementById('loader');
+                const generateBtn = this;
+                
+                const AR_ENTER_INDUSTRY_CHALLENGE = "يرجى إدخال مجالك وتحدي عملك.";
+                const AR_API_KEY_NOT_CONFIGURED = "مفتاح API غير مُعد. يرجى تعيين متغير البيئة API_KEY.";
+                const AR_API_KEY_INVALID = "مفتاح API المقدم غير صالح. يرجى التحقق من تكوين API_KEY الخاص بك.";
+                const AR_API_PERMISSION_DENIED = "تم رفض الإذن. قد لا يمتلك مفتاح API حق الوصول إلى Gemini API. يرجى التأكد من تمكين Gemini API لمشروعك وأن المفتاح لديه الأذونات الصحيحة.";
+                const AR_API_REQUEST_FAILED = "فشل طلب API بالحالة {status}";
+                const AR_COULD_NOT_GENERATE_SOLUTION = "تعذر إنشاء حل: {reason}. يرجى محاولة إعادة صياغة إدخالك.";
+                const AR_UNEXPECTED_RESPONSE = "عذراً، لم أتمكن من إنشاء فكرة حل في هذا الوقت. كانت الاستجابة من الذكاء الاصطناعي ليست بالتنسيق المتوقع. يرجى المحاولة مرة أخرى أو تحسين إدخالك.";
+                const AR_GENERIC_ERROR = "حدث خطأ: {message}. يرجى التحقق من وحدة التحكم للحصول على التفاصيل والمحاولة مرة أخرى لاحقًا.";
+
+                let isValid = true;
+                if (!industry) {
+                    industryInput.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    industryInput.classList.remove('border-red-500');
+                }
+                if (!challenge) {
+                    challengeInput.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    challengeInput.classList.remove('border-red-500');
+                }
+
+                if (!isValid) {
+                    solutionTextP.textContent = AR_ENTER_INDUSTRY_CHALLENGE;
+                    solutionOutputDiv.classList.remove('hidden');
+                    return;
+                }
+
+
+                solutionTextP.textContent = "";
+                solutionOutputDiv.classList.add('hidden');
+                if(loader) loader.style.display = 'inline-block'; 
+                generateBtn.disabled = true;
+                generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                // Prompt is in English, as the AI model is expected to process English best.
+                // The response will also be in English and displayed as such.
+                const prompt = \`You are Abdallah George, an expert AI Agent Builder specializing in creating autonomous AI agents and workflows for e-commerce, sales, marketing, and customer service.
+    A potential client from the '\${industry}' industry is facing the following challenge: '\${challenge}'.
+    Suggest an innovative and concise AI agent or agentic workflow solution.
+    Focus on how autonomous intelligence can provide a tangible, measurable result for this specific problem.
+    Keep the response to one compelling paragraph. Start with: "For a business in the \${industry} sector grappling with \${challenge}, an AI-powered solution I could develop involves..."
+    Ensure the tone is professional, confident, and solution-oriented.\`;
+                
+                let apiKey = "";
+                try {
+                    if (typeof process !== 'undefined' && process.env && typeof process.env.API_KEY === 'string') {
+                        apiKey = process.env.API_KEY;
+                    }
+                } catch (e) {
+                    console.warn("Could not access process.env.API_KEY. Ensure it is properly set if API calls are intended to work.", e);
+                }
+                
+                if (!apiKey) {
+                     console.error("API Key is missing. It must be configured via process.env.API_KEY.");
+                     solutionTextP.textContent = AR_API_KEY_NOT_CONFIGURED;
+                     if(loader) loader.style.display = 'none';
+                     solutionOutputDiv.classList.remove('hidden');
+                     generateBtn.disabled = false;
+                     generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                     return;
+                }
+
+                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent?key=\${apiKey}\`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }]
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error("API Error Response:", errorData);
+                        let errorMessageText = AR_API_REQUEST_FAILED.replace("{status}", response.status);
+                        if (errorData.error && errorData.error.message) {
+                             if (response.status === 400 && errorData.error?.message.toLowerCase().includes("api key not valid")) {
+                                errorMessageText = AR_API_KEY_INVALID;
+                            } else if (response.status === 403 && errorData.error?.message.toLowerCase().includes("permission denied")) {
+                                 errorMessageText = AR_API_PERMISSION_DENIED;
+                            } else {
+                                // For other errors, append the English message for clarity if no direct AR translation exists.
+                                errorMessageText += \` (\${errorData.error.message})\`; 
+                            }
+                        }
+                        throw new Error(errorMessageText);
+                    }
+                    
+                    const result = await response.json();
+                    let textOutput = "";
+                     if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0 && result.candidates[0].content.parts[0].text) {
+                        textOutput = result.candidates[0].content.parts[0].text;
+                    }
+
+                    if (textOutput) {
+                        // The output from Gemini is expected to be in English based on the prompt.
+                        // Display it directly.
+                        solutionTextP.innerHTML = textOutput.replace(/\\n/g, '<br>').replace(/\n/g, '<br>'); 
+                    } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+                        const reason = result.promptFeedback.blockReason.reason || 'محتوى محظور';
+                        solutionTextP.textContent = AR_COULD_NOT_GENERATE_SOLUTION.replace("{reason}", reason);
+                        console.error("Gemini API content generation blocked:", result.promptFeedback);
+                    } else {
+                        solutionTextP.textContent = AR_UNEXPECTED_RESPONSE;
+                        console.error("Gemini API response structure unexpected or empty:", result);
+                    }
+                } catch (error) {
+                    solutionTextP.textContent = AR_GENERIC_ERROR.replace("{message}", error.message);
+                    console.error("Error calling Gemini API:", error);
+                } finally {
+                    if(loader) loader.style.display = 'none';
+                    solutionOutputDiv.classList.remove('hidden');
+                    generateBtn.disabled = false;
+                    generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        // Scroll animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observerCallback = (entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0'); 
+                    obs.unobserve(entry.target); 
+                }
+            });
+        };
+        const intersectionObserver = new IntersectionObserver(observerCallback, observerOptions);
+        document.querySelectorAll('.card, .section-heading, .hero-animate-up, .fade-in-image').forEach(el => {
+            if (!el.classList.contains('hero-animate-up') && !el.classList.contains('fade-in-image')) {
+                 el.classList.add('opacity-0'); 
+            }
+            intersectionObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

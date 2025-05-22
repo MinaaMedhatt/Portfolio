@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdallah George - AI Agent Builder & Automation Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Default Dark Mode Colors */
+            --bg-primary: #0F172A; /* slate-900 */
+            --bg-secondary: #1E293B; /* slate-800 */
+            --bg-card: #1E293B; /* slate-800 */
+            --bg-card-hover-from: #293548; /* slightly lighter slate for card hover */
+            --bg-card-hover-to: #1E293B;   /* original card bg for card hover */
+            --text-primary: #E2E8F0; /* slate-200 */
+            --text-secondary: #94A3B8; /* slate-400 */
+            --text-muted: #64748B; /* slate-500 */
+            --border-color: #334155; /* slate-700 */
+            --accent-gradient-from: #0EA5E9; /* sky-500 */
+            --accent-gradient-to: #2DD4BF; /* teal-400 */
+            --icon-accent-1: #2DD4BF; /* teal-500 */
+            --icon-accent-2: #0EA5E9; /* sky-500 */
+            --link-hover-underline: #2DD4BF; /* teal-400 */
+            --input-bg: #334155; /* slate-700 */
+            --input-focus-ring: #0EA5E9; /* sky-500 */
+            --shadow-color-btn: rgba(14, 165, 233, 0.4);
+            --shadow-color-btn-glow: rgba(45, 212, 191, 0.5); /* Teal glow */
+            --hero-gradient-from: #0F172A; 
+            --hero-gradient-via: #1E293B;  
+            --hero-gradient-to: #0C4A6E;   /* sky-800 */
+            --nav-bg-color: rgba(30, 41, 59, 0.8); /* slate-800 with opacity */
+            --nav-link-hover-bg: #334155; /* slate-700 for nav link hover */
+            --mobile-menu-bg: #334155; /* slate-700 */
+            --mobile-menu-hover-bg: #475569; /* slate-600 */
+            --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 12px 25px rgba(0, 0, 0, 0.2);
+            --scroll-top-bg: var(--icon-accent-1);
+            --scroll-top-hover-bg: var(--icon-accent-2);
+        }
+
+        .light-mode {
+            /* Light Mode Colors */
+            --bg-primary: #F8FAFC; /* slate-50 */
+            --bg-secondary: #FFFFFF; /* white */
+            --bg-card: #FFFFFF; /* white */
+            --bg-card-hover-from: #F1F5F9; /* slightly darker white for card hover */
+            --bg-card-hover-to: #FFFFFF;   /* original card bg for card hover */
+            --text-primary: #1E293B; /* slate-800 */
+            --text-secondary: #475569; /* slate-600 */
+            --text-muted: #64748B; /* slate-500 */
+            --border-color: #E2E8F0; /* slate-200 */
+            --accent-gradient-from: #0EA5E9; 
+            --accent-gradient-to: #2DD4BF; 
+            --icon-accent-1: #0D9488; /* darker teal for light bg */
+            --icon-accent-2: #0284C7; /* darker sky for light bg */
+            --link-hover-underline: #14B8A6; /* darker teal for light bg */
+            --input-bg: #F1F5F9; /* slate-100 */
+            --input-focus-ring: #0EA5E9;
+            --shadow-color-btn: rgba(14, 165, 233, 0.3);
+            --shadow-color-btn-glow: rgba(14, 165, 233, 0.4); /* Sky glow for light mode */
+            --hero-gradient-from: #F8FAFC; 
+            --hero-gradient-via: #FFFFFF;  
+            --hero-gradient-to: #E0F2FE;   /* sky-100 */
+            --nav-bg-color: rgba(241, 245, 249, 0.85); /* slate-100 with higher opacity */
+            --nav-link-hover-bg: #E2E8F0; /* slate-200 for nav link hover */
+            --mobile-menu-bg: #FFFFFF; /* white */
+            --mobile-menu-hover-bg: #F1F5F9; /* slate-100 */
+            --card-shadow: 0 1px 3px 0 rgba(15,23,42,0.07), 0 1px 2px -1px rgba(15,23,42,0.04);
+            --card-shadow-hover: 0 10px 15px -3px rgba(15,23,42,0.07), 0 4px 6px -4px rgba(15,23,42,0.05);
+            --scroll-top-bg: var(--icon-accent-1);
+            --scroll-top-hover-bg: var(--icon-accent-2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary); 
+            color: var(--text-primary); 
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            color: #FFFFFF; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color-btn); /* Initial shadow */
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05); /* Slightly more lift */
+            box-shadow: 0 8px 25px var(--shadow-color-btn), 0 0 20px var(--shadow-color-btn-glow); /* Enhanced shadow and glow */
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: var(--bg-card); 
+            border-color: var(--accent-gradient-to); 
+            transform: translateY(-2px);
+        }
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+            transition: color 0.3s ease; 
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0; 
+            bottom: -12px; 
+            width: 0%; 
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gradient-from), var(--accent-gradient-to)); 
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        }
+        .section-heading-container {
+             text-align: center;
+        }
+        .section-heading-container:hover .section-heading::after { 
+            width: 100%; 
+        }
+        .card {
+            background-color: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s ease, border-color 0.3s ease;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            background-image: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card) 100%); 
+        }
+        .card:hover {
+            transform: translateY(-10px) scale(1.03); 
+            box-shadow: var(--card-shadow-hover);
+            background-image: linear-gradient(135deg, var(--bg-card-hover-from) 0%, var(--bg-card-hover-to) 100%); 
+        }
+        .hero-animate-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; }
+        .hero-animate-delay-1 { animation-delay: 0.2s; }
+        .hero-animate-delay-2 { animation-delay: 0.4s; }
+        .hero-animate-delay-3 { animation-delay: 0.6s; }
+        .hero-animate-delay-4 { animation-delay: 0.8s; }
+
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .loader { border: 4px solid var(--border-color); border-top: 4px solid var(--icon-accent-1); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .fade-in-image { animation: fadeIn 1.5s ease-in-out forwards; }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: scale(0.95); } 
+            to { opacity: 1; transform: scale(1); } 
+        }
+        
+        .hero-image-pulse {
+            animation: subtlePulse 4s infinite ease-in-out;
+        }
+        @keyframes subtlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .animate-pulse-custom { animation: pulseCustom 2s infinite; }
+        @keyframes pulseCustom { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+
+        .animate-bounce-slow { animation: bounceSlow 2.5s infinite; }
+        @keyframes bounceSlow { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        
+        .industry-icon { width: 4rem; height: 4rem; margin-bottom: 1rem; transition: transform 0.3s ease; }
+        .card:hover .industry-icon { transform: scale(1.15) translateY(-5px); } 
+        
+        .nav-main-link { color: var(--text-secondary); position: relative; padding: 0.5rem 0.75rem; border-radius: 0.375rem; transition: color 0.3s ease, background-color 0.3s ease; }
+        .nav-main-link:hover { color: var(--text-primary); background-color: var(--nav-link-hover-bg); }
+        .nav-main-link::after { content: ''; position: absolute; width: 0; height: 2px; display: block; margin-top: 5px; right: 50%; transform: translateX(50%); background: var(--link-hover-underline); transition: width 0.3s ease; -webkit-transition: width 0.3s ease; }
+        .nav-main-link:hover::after { width: 60%; } 
+        
+        /* Navbar scroll behavior */
+        .nav-bg { 
+            background-color: var(--nav-bg-color); 
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease; 
+            transform: translateY(0);
+        }
+        .nav-up { /* Class to hide navbar */
+            transform: translateY(-100%);
+        }
+
+        .footer-bg { background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); }
+        
+        .text-strong { color: #FFFFFF; } 
+        .light-mode .text-strong { color: #0F172A; } 
+        
+        .text-accent-1 { color: var(--icon-accent-1); }
+        .text-accent-2 { color: var(--icon-accent-2); }
+
+        .input-field { background-color: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-primary); transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .input-field:focus { outline: none; border-color: var(--input-focus-ring); box-shadow: 0 0 0 3px var(--input-focus-ring); } 
+        .input-field::placeholder { color: var(--text-muted); }
+
+        #mobile-menu { background-color: var(--mobile-menu-bg); }
+        #mobile-menu a, #mobile-theme-toggle, #mobile-lang-toggle { color: var(--text-secondary); }
+        #mobile-menu a:hover, #mobile-theme-toggle:hover, #mobile-lang-toggle:hover { background-color: var(--mobile-menu-hover-bg); color: var(--text-primary); }
+
+        #theme-toggle:hover, #lang-toggle:hover { background-color: var(--border-color); }
+        #theme-toggle-dark-icon { color: var(--text-secondary); }
+        .light-mode #theme-toggle-light-icon { color: #f59e0b; } 
+
+        #hero-bg-overlay { background-image: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-via), var(--hero-gradient-to)); }
+
+        #scrollTopBtn {
+            background-color: var(--scroll-top-bg);
+            transition: opacity 0.3s ease-in-out, background-color 0.3s ease, transform 0.3s ease;
+        }
+        #scrollTopBtn:hover {
+            background-color: var(--scroll-top-hover-bg);
+            transform: scale(1.1);
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="antialiased text-base md:text-lg"> 
+    <nav id="main-navbar" class="nav-bg backdrop-blur-sm fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl md:text-3xl font-bold gradient-text">Abdallah George</a>
+            <div class="hidden md:flex space-x-1 items-center"> 
+                <a href="#home" class="nav-main-link text-sm md:text-base">Home</a>
+                <a href="#services" class="nav-main-link text-sm md:text-base">My Services</a>
+                <a href="#problems-solved" class="nav-main-link text-sm md:text-base">Problems I Solve</a>
+                <a href="#projects" class="nav-main-link text-sm md:text-base">My Projects</a>
+                <a href="#about" class="nav-main-link text-sm md:text-base">About Me</a>
+                <a href="#blog" class="nav-main-link text-sm md:text-base">Blog</a>
+                <a href="#contact" class="btn-primary font-semibold py-2 px-5 rounded-full shadow-md hover:shadow-lg transition duration-300 animate-pulse-custom text-sm md:text-base ml-4">Let's Talk</a>
+                <button id="theme-toggle" class="p-2 rounded-full focus:outline-none transition-colors ml-2" title="Toggle theme"> 
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.706a1 1 0 01-1.414 1.414l.707.706zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-secondary focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden py-2">
+            <a href="#home" class="block px-4 py-2 text-base">Home</a>
+            <a href="#services" class="block px-4 py-2 text-base">My Services</a>
+            <a href="#problems-solved" class="block px-4 py-2 text-base">Problems I Solve</a>
+            <a href="#projects" class="block px-4 py-2 text-base">My Projects</a>
+            <a href="#about" class="block px-4 py-2 text-base">About Me</a>
+            <a href="#blog" class="block px-4 py-2 text-base">Blog</a>
+            <a href="#contact" class="block px-4 py-2 text-base">Let's Talk</a>
+            <button id="mobile-theme-toggle" class="w-full text-left px-4 py-2 flex items-center text-base">
+                <span id="mobile-theme-toggle-text">Switch to Light Mode</span>
+                <svg id="mobile-theme-toggle-dark-icon" class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="mobile-theme-toggle-light-icon" class="w-5 h-5 ml-2 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.706a1 1 0 01-1.414 1.414l.707.706zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+        <div id="hero-bg-overlay" class="absolute inset-0 opacity-60"></div>
+        <div class="absolute inset-0" style="background-image: url('https://placehold.co/1920x1080/0F172A/1E293B?text=Tech+Background'); opacity: 0.05;"></div>
+
+        <div class="relative z-10 container mx-auto px-4 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 mb-10">
+                <div class="md:w-2/5 order-1 md:order-2 hero-animate-up hero-animate-delay-4">
+                    <img src="https://i.postimg.cc/Xqc8hLRV/profile-pic.png" alt="Abdallah George - AI Agent Builder" class="rounded-full w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover mx-auto shadow-2xl transition-all duration-300 transform hover:scale-105 fade-in-image hero-image-pulse" onerror="this.onerror=null;this.src='https://placehold.co/320x320/1E293B/E2E8F0?text=Abdallah+G.';">
+                </div>
+                <div class="md:w-3/5 text-center md:text-left order-2 md:order-1">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 gradient-text hero-animate-up">
+                        Hi, I'm Abdallah George
+                    </h1>
+                    <p class="text-xl sm:text-2xl md:text-2xl lg:text-3xl text-primary mb-3 hero-animate-up hero-animate-delay-1">
+                        Your Expert <span class="font-semibold text-accent-2">AI Agent Builder</span> & <span class="font-semibold text-accent-1">Automation Strategist</span>.
+                    </p>
+                    <p class="text-lg md:text-xl lg:text-2xl text-secondary mb-6 hero-animate-up hero-animate-delay-2 leading-relaxed">
+                        Feeling overwhelmed by repetitive tasks, struggling with customer engagement, or missing out on sales opportunities? I design <strong class="text-strong">intelligent AI agents and autonomous workflows</strong> that tackle these head-on, transforming your operational challenges into growth engines.
+                    </p>
+                     <p class="text-lg md:text-xl lg:text-2xl text-muted mb-8 hero-animate-up hero-animate-delay-3 leading-relaxed">
+                        Whether it's <strong class="text-strong">skyrocketing e-commerce conversions</strong>, <strong class="text-strong">automating sales pipelines</strong>, <strong class="text-strong">personalizing marketing at scale</strong>, or <strong class="text-strong">revolutionizing customer support</strong>, my custom AI solutions deliver measurable results and give you back valuable time.
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row justify-center hero-animate-up hero-animate-delay-3">
+                <a href="#contact" class="btn-primary font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 text-lg md:text-xl animate-bounce-slow">
+                    Solve My Business Bottlenecks
+                </a>
+                <a href="#services" class="btn-secondary font-semibold py-3 px-8 rounded-full shadow-lg text-lg md:text-xl">
+                    Explore My AI Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-20"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">My Core AI Services</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 mb-20">
+                <div class="card p-8 rounded-2xl shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-accent-1 mr-4 industry-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        <h3 class="text-3xl md:text-4xl font-semibold gradient-text">Conversational AI Agents</h3>
+                    </div>
+                    <p class="text-secondary md:text-lg lg:text-xl mb-6 leading-relaxed">
+                        I build advanced chatbots, virtual assistants, and intelligent conversational interfaces that redefine customer engagement, streamline support, and drive sales.
+                    </p>
+                    <ul class="list-disc list-inside text-secondary md:text-lg space-y-2 pl-2">
+                        <li>24/7 intelligent customer support & FAQ handling</li>
+                        <li>Personalized sales & marketing interactions</li>
+                        <li>Automated lead qualification & appointment setting</li>
+                        <li>Efficient internal helpdesks & employee assistants</li>
+                    </ul>
+                    <p class="mt-6 text-secondary md:text-lg lg:text-xl">
+                        <strong class="text-accent-2">Problem Solved:</strong> Reduce support overhead, boost customer satisfaction, increase lead conversion rates, and improve internal efficiency.
+                    </p>
+                </div>
+                <div class="card p-8 rounded-2xl shadow-xl">
+                     <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-accent-2 mr-4 industry-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <h3 class="text-3xl md:text-4xl font-semibold gradient-text">Agentic AI Workflows</h3>
+                    </div>
+                    <p class="text-secondary md:text-lg lg:text-xl mb-6 leading-relaxed">
+                        I develop sophisticated autonomous decision-making systems and self-optimizing automation solutions that handle complex tasks and drive operational excellence.
+                    </p>
+                    <ul class="list-disc list-inside text-secondary md:text-lg space-y-2 pl-2">
+                        <li>Predictive inventory & supply chain management</li>
+                        <li>Automated dynamic pricing & revenue optimization</li>
+                        <li>Intelligent content generation & personalization</li>
+                        <li>Proactive fraud detection & risk mitigation</li>
+                    </ul>
+                     <p class="mt-6 text-secondary md:text-lg lg:text-xl">
+                        <strong class="text-accent-1">Problem Solved:</strong> Optimize resource allocation, maximize revenue, scale content creation, and enhance security with intelligent automation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problems-solved" class="py-20" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-10"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">Transforming Industries with AI</h2>
+            </div>
+            <p class="text-xl md:text-2xl lg:text-3xl text-primary text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+                My AI solutions are designed to tackle specific industry pain points, delivering tangible benefits and a significant return on investment. Here's how I help:
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">E-commerce</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        Boost sales with AI chatbots for personalized shopping, automate order processing, and optimize inventory with predictive analytics.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                     <svg class="industry-icon mx-auto text-accent-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">Sales Automation</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        Streamline lead qualification, automate follow-ups with AI agents, and gain insights with predictive sales analytics to close more deals.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">Marketing Intelligence</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        Deliver hyper-personalized campaigns, automate content creation for different segments, and analyze performance in real-time with AI.
+                    </p>
+                </div>
+                <div class="card p-6 rounded-xl shadow-md text-center">
+                    <svg class="industry-icon mx-auto text-accent-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                    </svg>
+                    <h4 class="text-xl md:text-2xl font-semibold text-primary mb-2">Customer Service</h4>
+                    <p class="text-secondary text-sm md:text-base">
+                        Provide 24/7 support with intelligent AI agents, reduce wait times, resolve issues faster, and improve overall customer satisfaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-16"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">My Impact: Projects & Case Studies</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="card p-8 rounded-2xl shadow-xl flex flex-col">
+                    <img src="https://d3lkc3n5th01x7.cloudfront.net/wp-content/uploads/2023/09/17215144/Gen-AI-in-ecomerce.png" alt="E-commerce Conversion Booster Project" class="rounded-lg mb-6 w-full h-auto object-cover fade-in-image shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/600x350/1E293B/2DD4BF?text=E-commerce+AI';">
+                    <h3 class="text-3xl md:text-4xl font-semibold gradient-text mb-4">E-commerce Conversion Booster</h3>
+                    <p class="text-secondary md:text-lg mb-3"><strong class="text-strong">The Problem:</strong> A rapidly growing online fashion retailer was struggling with low on-site conversion rates and high cart abandonment despite significant traffic.</p>
+                    <p class="text-secondary md:text-lg mb-3"><strong class="text-strong">My AI Solution:</strong> I developed and deployed a sophisticated Conversational AI Agent. This agent engaged visitors with personalized product recommendations based on browsing behavior, answered queries instantly, and offered proactive assistance during the checkout process to address potential friction points.</p>
+                    <div class="mt-auto">
+                        <p class="text-secondary md:text-lg mb-1"><strong class="text-strong">Tangible Results:</strong></p>
+                        <ul class="list-disc list-inside text-accent-1 text-sm md:text-base space-y-1 pl-2"> 
+                            <li><span class="font-semibold">18% increase</span> in overall conversion rate within 3 months.</li>
+                            <li><span class="font-semibold">12% reduction</span> in cart abandonment rate.</li>
+                            <li><span class="font-semibold">20% uplift</span> in average order value due to smart cross-sells.</li>
+                        </ul>
+                        <span class="text-xs md:text-sm text-muted block mt-3">Key Tech: NLP, Machine Learning, Recommendation Engines, E-commerce API Integration.</span>
+                    </div>
+                </div>
+                <div class="card p-8 rounded-2xl shadow-xl flex flex-col">
+                    <img src="https://vipecloud.com/wp-content/uploads/2020/10/3.5-1024x576.jpg" alt="Autonomous Sales Lead Nurturing Project" class="rounded-lg mb-6 w-full h-auto object-cover fade-in-image shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/600x350/1E293B/0EA5E9?text=Sales+Automation';">
+                    <h3 class="text-3xl md:text-4xl font-semibold gradient-text mb-4">Autonomous Sales Lead Nurturing</h3>
+                    <p class="text-secondary md:text-lg mb-3"><strong class="text-strong">The Problem:</strong> A B2B SaaS company faced inefficiencies in their sales pipeline. Leads were often followed up inconsistently, and the sales team spent too much time on manual qualification tasks.</p>
+                    <p class="text-secondary md:text-lg mb-3"><strong class="text-strong">My AI Solution:</strong> I implemented an Agentic AI Workflow that integrated with their CRM. This workflow autonomously qualified new leads based on predefined criteria, segmented them, and initiated personalized email nurturing sequences. It also scheduled demos for highly qualified leads directly into sales reps' calendars.</p>
+                     <div class="mt-auto">
+                        <p class="text-secondary md:text-lg mb-1"><strong class="text-strong">Tangible Results:</strong></p>
+                        <ul class="list-disc list-inside text-accent-2 text-sm md:text-base space-y-1 pl-2"> 
+                            <li><span class="font-semibold">25% increase</span> in marketing qualified leads (MQLs) passed to sales.</li>
+                            <li><span class="font-semibold">15% reduction</span> in average sales cycle length.</li>
+                            <li><span class="font-semibold">30% improvement</span> in sales team productivity by automating routine tasks.</li>
+                        </ul>
+                        <span class="text-xs md:text-sm text-muted block mt-3">Key Tech: Predictive Lead Scoring, CRM Automation, AI-driven Email Personalization.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20" style="background-color: var(--bg-secondary);"> 
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-16"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">About Abdallah George</h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-center md:space-x-12 p-8 md:p-12 rounded-2xl shadow-2xl" style="background-color: var(--bg-primary);"> 
+                <div class="md:w-1/3 mb-8 md:mb-0 text-center">
+                     <img src="https://i.postimg.cc/Xqc8hLRV/profile-pic.png" alt="Abdallah George - AI Specialist" class="rounded-full w-56 h-56 md:w-72 md:h-72 object-cover mx-auto shadow-xl transition-all duration-300 transform hover:scale-105 fade-in-image hero-image-pulse" onerror="this.onerror=null;this.src='https://placehold.co/288x288/1E293B/E2E8F0?text=Abdallah+G.';">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="text-3xl md:text-4xl font-semibold gradient-text mb-4">My Vision: AI as Your Strategic Partner</h3>
+                    <p class="text-secondary text-lg md:text-xl lg:text-2xl mb-5 leading-relaxed">
+                        I'm Abdallah George, an AI Agent Builder with a passion for transforming businesses through intelligent automation. My vision is not just to implement AI, but to make it a core strategic partner that understands your unique challenges and proactively drives solutions.
+                    </p>
+                    <p class="text-secondary text-lg md:text-xl lg:text-2xl mb-5 leading-relaxed">
+                        I believe in a collaborative approach, working closely with you to dissect problems, identify opportunities, and craft bespoke AI agents and workflows. My focus is always on delivering practical, measurable results – whether that's boosting efficiency, enhancing customer experiences, or unlocking new revenue streams.
+                    </p>
+                     <p class="text-secondary text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed">
+                        With expertise in Natural Language Processing, Machine Learning, and Agentic System Design, I'm committed to staying at the forefront of AI innovation to bring you solutions that are not just cutting-edge, but also robust, scalable, and aligned with your business goals.
+                    </p>
+                    <a href="#contact" class="btn-primary font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 inline-block text-lg md:text-xl">
+                        Let's Build Your AI Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="py-20" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-16"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">AI Insights & Perspectives</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://i0.wp.com/www.lyzr.ai/wp-content/uploads/2024/08/Power-of-Autonomous-Agents-scaled.webp" alt="Blog Post: Autonomous Agents" class="rounded-lg mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x350/1E293B/2DD4BF?text=Autonomous+Agents';">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">The Rise of Autonomous Agents in Business</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        Explore how autonomous AI agents are moving beyond simple task automation to become proactive decision-makers and strategic assets for businesses.
+                    </p>
+                    <a href="#" class="text-accent-1 hover:underline text-sm md:text-base font-medium">Read More &rarr;</a>
+                </div>
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://resources.nice.com/wp-content/uploads/2024/10/An-illustration-representing-AI-driven-personalization-strategies-for-marketers.jpg" alt="Blog Post: AI Personalization" class="rounded-lg mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x350/1E293B/0EA5E9?text=AI+Personalization';">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">Hyper-Personalization: The AI Advantage in Marketing</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        A deep dive into how AI-driven personalization is revolutionizing marketing, creating unique customer journeys that boost engagement and loyalty.
+                    </p>
+                    <a href="#" class="text-accent-2 hover:underline text-sm md:text-base font-medium">Read More &rarr;</a>
+                </div>
+                <div class="card p-6 rounded-2xl shadow-xl fade-in-image">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E12AQFkgi4sA2hxIg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706547053573?e=2147483647&v=beta&t=UAtFFlinGuOafmeJgJk_Xz1I2PAiM3tv6eODUgZV3S4" alt="Blog Post: AI in Customer Support" class="rounded-lg mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x350/1E293B/2DD4BF?text=AI+Support';">
+                    <h3 class="text-xl md:text-2xl font-semibold text-primary mb-2">The Future of Customer Support: AI-Powered Empathy</h3>
+                    <p class="text-secondary text-sm md:text-base mb-4">
+                        Discover how advanced conversational AI is not just answering questions, but understanding sentiment and providing empathetic support at scale.
+                    </p>
+                    <a href="#" class="text-accent-1 hover:underline text-sm md:text-base font-medium">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn-secondary font-semibold py-3 px-8 rounded-full shadow-lg text-lg md:text-xl">
+                    Explore All Insights
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20" style="background-color: var(--bg-secondary);"> 
+        <div class="container mx-auto px-4">
+            <div class="section-heading-container mb-16"> 
+                <h2 class="text-4xl md:text-5xl font-bold section-heading">Let's Discuss Your AI Transformation</h2>
+            </div>
+            <div class="max-w-3xl mx-auto card p-8 md:p-10 rounded-2xl shadow-2xl">
+                <p class="text-primary text-lg md:text-xl lg:text-2xl text-center mb-8">
+                    Ready to unlock the power of autonomous AI agents for your business? Fill out the form below, or schedule a direct consultation. Let's turn your challenges into opportunities.
+                </p>
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-secondary text-sm md:text-base font-bold mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., Alex Johnson" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-secondary text-sm md:text-base font-bold mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., alex.j@company.com" required>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-secondary text-sm md:text-base font-bold mb-2">Company Name (Optional)</label>
+                        <input type="text" id="company" name="company" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., Innovatech Solutions">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-secondary text-sm md:text-base font-bold mb-2">What business challenge can I help you solve with AI?</label>
+                        <textarea id="message" name="message" rows="5" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., We're struggling with high customer support volume..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary font-semibold py-3 px-10 rounded-full shadow-lg hover:shadow-xl transition duration-300 text-lg md:text-xl">
+                            Send My Inquiry
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-10">
+                    <p class="text-primary md:text-lg mb-4">Prefer a direct conversation?</p>
+                    <a href="https://calendly.com/your-calendly-link" target="_blank" class="btn-secondary font-semibold py-3 px-8 rounded-full shadow-lg inline-block text-lg md:text-xl">
+                        Schedule a Free Consultation (Calendly)
+                    </a>
+                </div>
+                <div class="mt-16 pt-10 border-t border-border-color">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 gradient-text">Quick AI Solution Idea ✨</h3>
+                    <p class="text-secondary md:text-lg lg:text-xl text-center mb-6">
+                        Curious how AI can tackle a specific problem? Describe your industry and challenge, and I'll generate a potential AI solution concept for you!
+                    </p>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="industry-input" class="block text-secondary text-sm md:text-base font-bold mb-2">Your Industry (e.g., E-commerce, SaaS, Healthcare)</label>
+                            <input type="text" id="industry-input" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., E-commerce" required>
+                        </div>
+                        <div>
+                            <label for="challenge-input" class="block text-secondary text-sm md:text-base font-bold mb-2">Your Core Business Challenge</label>
+                            <textarea id="challenge-input" rows="3" class="input-field shadow appearance-none rounded-lg w-full py-3 px-4 text-base md:text-lg leading-tight" placeholder="e.g., High customer churn" required></textarea>
+                        </div>
+                        <div class="flex justify-center items-center space-x-4">
+                            <button id="generate-solution-btn" class="btn-primary font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center text-lg md:text-xl">
+                                Generate AI Idea
+                            </button>
+                            <div id="loader" class="loader"></div>
+                        </div>
+                        <div id="solution-output" class="mt-8 p-6 rounded-lg shadow-inner hidden" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"> 
+                            <h4 class="text-xl md:text-2xl font-semibold text-primary mb-3">Potential AI Solution Concept:</h4>
+                            <p class="text-primary md:text-lg lg:text-xl leading-relaxed" id="solution-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bg py-10 text-center text-muted text-sm md:text-base">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Abdallah George - AI Agent Builder. All rights reserved.</p>
+            </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Go to top" class="fixed bottom-5 right-5 p-3 rounded-full shadow-md text-white opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+    // Ensure script runs only once
+    if (typeof window.englishPortfolioScriptLoaded === 'undefined') {
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileDarkIcon = document.getElementById('mobile-theme-toggle-dark-icon');
+        const mobileLightIcon = document.getElementById('mobile-theme-toggle-light-icon');
+        const mobileThemeToggleText = document.getElementById('mobile-theme-toggle-text');
+
+        function applyTheme(isLight) {
+            if (isLight) {
+                document.body.classList.add('light-mode');
+                document.body.classList.remove('dark-mode');
+                if(darkIcon) darkIcon.classList.add('hidden');
+                if(lightIcon) lightIcon.classList.remove('hidden');
+                if (mobileDarkIcon && mobileLightIcon && mobileThemeToggleText) {
+                    mobileDarkIcon.classList.add('hidden');
+                    mobileLightIcon.classList.remove('hidden');
+                    mobileThemeToggleText.textContent = 'Switch to Dark Mode';
+                }
+            } else {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode'); 
+                if(darkIcon) darkIcon.classList.remove('hidden');
+                if(lightIcon) lightIcon.classList.add('hidden');
+                 if (mobileDarkIcon && mobileLightIcon && mobileThemeToggleText) {
+                    mobileDarkIcon.classList.remove('hidden');
+                    mobileLightIcon.classList.add('hidden');
+                    mobileThemeToggleText.textContent = 'Switch to Light Mode';
+                }
+            }
+        }
+        
+        let preferredTheme = localStorage.getItem('theme');
+        let isLightModeActive = preferredTheme === 'light'; 
+        
+        if (preferredTheme !== 'light' && preferredTheme !== 'dark') { 
+             isLightModeActive = false; 
+             localStorage.setItem('theme', 'dark'); 
+        }
+        applyTheme(isLightModeActive);
+
+
+        function toggleTheme() {
+            isLightModeActive = !isLightModeActive;
+            localStorage.setItem('theme', isLightModeActive ? 'light' : 'dark');
+            applyTheme(isLightModeActive);
+        }
+
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') { 
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    try {
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            e.preventDefault();
+                            const navbar = document.querySelector('nav#main-navbar'); 
+                            const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    } catch (error) {
+                        console.warn("Smooth scroll target not found or invalid selector:", href, error);
+                    }
+                }
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (scrollTopBtn) {
+            window.addEventListener('scroll', scrollFunction); // Use addEventListener for consistency
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            }
+
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        }
+
+        // Navbar hide/show on scroll
+        let lastScrollTop = 0;
+        const mainNavbar = document.getElementById('main-navbar');
+        const scrollThreshold = mainNavbar ? mainNavbar.offsetHeight / 2 : 30;
+
+        window.addEventListener('scroll', function() {
+            if (!mainNavbar) return;
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                mainNavbar.classList.add('nav-up');
+            } else {
+                mainNavbar.classList.remove('nav-up');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        }, false);
+
+
+        // Gemini API Integration for solution generation
+        const generateSolutionBtn = document.getElementById('generate-solution-btn');
+        if(generateSolutionBtn) {
+            generateSolutionBtn.addEventListener('click', async function() {
+                const industryInput = document.getElementById('industry-input');
+                const challengeInput = document.getElementById('challenge-input');
+                const solutionOutputDiv = document.getElementById('solution-output');
+                const solutionTextP = document.getElementById('solution-text');
+                const loader = document.getElementById('loader');
+                const generateBtn = this; 
+
+                const industry = industryInput ? industryInput.value.trim() : '';
+                const challenge = challengeInput ? challengeInput.value.trim() : '';
+
+                if (!industry || !challenge) {
+                    if (solutionTextP) solutionTextP.textContent = "Please enter both your industry and your business challenge.";
+                    if (solutionOutputDiv) solutionOutputDiv.classList.remove('hidden');
+                    return;
+                }
+
+                if (solutionTextP) solutionTextP.textContent = ""; 
+                if (solutionOutputDiv) solutionOutputDiv.classList.add('hidden'); 
+                if(loader) loader.style.display = 'inline-block'; 
+                generateBtn.disabled = true; 
+                generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                const prompt = `You are Abdallah George, an expert AI Agent Builder specializing in creating autonomous AI agents and workflows for e-commerce, sales, marketing, and customer service.
+A potential client from the '${industry}' industry is facing the following challenge: '${challenge}'.
+Suggest an innovative and concise AI agent or agentic workflow solution.
+Focus on how autonomous intelligence can provide a tangible, measurable result for this specific problem.
+Keep the response to one compelling paragraph. Start with: "For a business in the ${industry} sector grappling with ${challenge}, an AI-powered solution I could develop involves..."
+Ensure the tone is professional, confident, and solution-oriented.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error("API Error Response:", errorData);
+                        throw new Error(`API request failed with status ${response.status}: ${errorData.error?.message || 'Unknown error'}`);
+                    }
+                    
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        if (solutionTextP) solutionTextP.innerHTML = text.replace(/\n/g, '<br>'); 
+                    } else {
+                        if (solutionTextP) solutionTextP.textContent = "Sorry, I couldn't generate a solution idea at this time. The response from the AI was not in the expected format. Please try again or refine your input.";
+                        console.error("Gemini API response structure unexpected:", result);
+                    }
+                } catch (error) {
+                    if (solutionTextP) solutionTextP.textContent = "An error occurred while generating the solution. Please check the console for details and try again later.";
+                    console.error("Error calling Gemini API:", error);
+                } finally {
+                    if(loader) loader.style.display = 'none'; 
+                    if (solutionOutputDiv) solutionOutputDiv.classList.remove('hidden'); 
+                    generateBtn.disabled = false; 
+                    generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-image'); 
+                    entry.target.classList.remove('opacity-0'); 
+                    observer.unobserve(entry.target); 
+                }
+            });
+        };
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        document.querySelectorAll('.card, .section-heading, .fade-in-image:not(.hero-image-pulse)').forEach(el => { 
+            if (!el.classList.contains('fade-in-image')) { 
+                 el.classList.add('opacity-0');
+            }
+            observer.observe(el);
+        });
+        
+        document.querySelectorAll('.hero-animate-up').forEach(el => {
+            // These are handled by their own CSS animations.
+        });
+
+        window.englishPortfolioScriptLoaded = true;
+        console.log("Portfolio script loaded and initialized.");
+    } else {
+        console.log("Portfolio script already loaded.");
+    }
+    </script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
